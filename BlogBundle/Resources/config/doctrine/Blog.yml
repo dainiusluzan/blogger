@@ -1,0 +1,88 @@
+Blogger\BlogBundle\Entity\Blog:
+    type: entity
+    table: blog
+    repositoryClass: Blogger\BlogBundle\Entity\Repository\BlogRepository
+    uniqueConstraints:
+        search_idx:
+            columns:
+                - id
+                - url
+    id:
+        id:
+            type: integer
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        url:
+            type: string
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+        title:
+            type: string
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+        author:
+            type: string
+            scale: 0
+            length: 100
+            unique: false
+            nullable: false
+            precision: 0
+        blog:
+            type: text
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+        image:
+            type: string
+            scale: 0
+            length: 20
+            unique: false
+            nullable: false
+            precision: 0
+        tags:
+            type: text
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+        created:
+            type: datetime
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+        updated:
+            type: datetime
+            scale: 0
+            length: null
+            unique: false
+            nullable: false
+            precision: 0
+    oneToMany:
+        comments:
+            targetEntity: Blogger\BlogBundle\Entity\Comment
+            cascade: {  }
+            mappedBy: blog
+            inversedBy: null
+            orphanRemoval: false
+            orderBy: null
+    lifecycleCallbacks:
+        preUpdate:
+            - setUpdatedValue
