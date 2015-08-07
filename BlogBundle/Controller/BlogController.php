@@ -27,7 +27,6 @@ class BlogController extends Controller
         $blog = $em->getRepository('BloggerBlogBundle:Blog')->findOneByUrl($url);
 
         if (!$blog) {
-//            print_r($em);
             throw $this->createNotFoundException('Unable to find Blog post1.');
         }
 
